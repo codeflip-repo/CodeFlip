@@ -2,25 +2,35 @@ package io.codeflip.actions;
 
 import io.codeflip.actions.model.Action;
 import io.codeflip.actions.model.ActionMetadata;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A factory class for managing and retrieving Action instances.
+ * Factory class for managing and creating Action instances.
  * This class is responsible for registering actions and providing access to them.
  */
+@Component
 public class ActionFactory {
-    private final Map<String, Action<?>> actions = new HashMap<>();
+    private final Map<String, Action<?>> actions;
 
     /**
-     * Constructs a new ActionFactory and registers the default actions.
+     * Constructs a new ActionFactory and initializes the default actions.
      */
     public ActionFactory() {
+        this.actions = new HashMap<>();
+        init();
+    }
+
+    /**
+     * Initializes the factory with default actions.
+     */
+    private void init() {
         registerAction(new ExecuteCommandAction());
         registerAction(new WriteToFileAction());
-        registerAction(new FetchAvailableActions(this));
         registerAction(new ReadFileAction());
+        registerAction(new FetchAvailableActions(this));
     }
 
     /**
@@ -64,11 +74,6 @@ public class ActionFactory {
      * Exception thrown when an attempt is made to retrieve a non-existent action.
      */
     public static class ActionNotFoundException extends Exception {
-        /**
-         * Constructs a new ActionNotFoundException with the specified detail message.
-         *
-         * @param message The detail message (which is saved for later retrieval by the getMessage() method)
-         */
         public ActionNotFoundException(String message) {
             super(message);
         }
