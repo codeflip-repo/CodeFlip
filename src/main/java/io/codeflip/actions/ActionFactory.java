@@ -19,7 +19,7 @@ public class ActionFactory {
     public ActionFactory() {
         registerAction(new ExecuteCommandAction());
         registerAction(new WriteToFileAction());
-        // Register other actions here
+        registerAction(new ReadFileAction());
     }
 
     /**

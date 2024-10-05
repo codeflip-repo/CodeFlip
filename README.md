@@ -18,6 +18,7 @@ io.codeflip.actions/
 │   └── ActionExecutionException.java
 ├── ExecuteCommandAction.java
 ├── WriteToFileAction.java
+├── ReadFileAction.java
 └── FetchAvailableActionsAction.java
 ```
 
@@ -38,6 +39,7 @@ All these components are located in the `io.codeflip.actions.model` package.
 1. `ExecuteCommandAction`: Executes a system command and returns the result.
 2. `WriteToFileAction`: Writes content to a file at a specified path.
 3. `FetchAvailableActionsAction`: Retrieves information about all available actions.
+4. `ReadFileAction`: Reads the contents of a file at the specified path and returns it as a string.
 
 These action implementations are located directly in the `io.codeflip.actions` package.
 
